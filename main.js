@@ -23,52 +23,30 @@ const lista = [
 const listaElement = document.querySelector("ul");
 
 /*************************** Attraverso l'array e stampo ogni item ***************************/
-console.log("Itero gli elementi con for");
-for (let i = 0; i < lista.length; i++) {
 
-	const element = lista[i];
-	console.log(i, element);
-
-	// const liElement = document.createElement("li");
-	// liElement.innerText = element;
-	// listaElement.append(liElement);
-
-	listaElement.innerHTML += `<li>${element}</li>`;
-	
-}
-// console.log(i); //errore (scope)
-
-
-/***************************  Attraverso di nuovo l'array, ma col while ***********************/
-console.log("Itero gli elementi con while");
 let i = 0;
-while (i < lista.length) {
+while(i < lista.length) {
 
-	const element = lista[i];
-	console.log(i, element);
+	console.log( lista[i] );
 
+	let element = lista[i];
+	listaElement.innerHTML += `<li>${element}</li>`;
 	i++;
 }
-console.log("Contatore ancora esistente dopo il while: ", i);
 
 
-/*************************** Esempio di ricerca in un array + break **************************/
-// Esempio di ricerca in un array (con break)
-// // Creo un variabile d'appoggio esterna al ciclo per conservare il risultato della ricerca
-// let hoTrovato = false;
+/************************ Gestisco il click sul pulsante di aggiunta *************************/
+							 
+document.getElementById("btnAdd").addEventListener("click", addElementToList);
 
-// // Itero sull'array
-// for (let i = 0; i < lista.length; i++) {
-// // Stampo l'elemento corrente, solo per debuggin
-// 	const element = lista[i];
-// 	console.log(i, element);
-	
-// // Quando ho trovato l'elemento giusto, me lo scrivo nella variabile e stoppo (break)
-// 	if(element == "Case") {
-// 		hoTrovato = true;
-// 		break;
-// 	}
-	
-// }
+function addElementToList() {
+	//Recupero il valore dal'input
+	let nuovoComponente = document.getElementById("new").value;
+	//Aggiungo il nuovo elemento all'array
+	lista.push(nuovoComponente);
+	//Aggiungo il nuovo elemento anche nel DOM
+	listaElement.innerHTML += `<li>${nuovoComponente}</li>`;
+	//Svuoto l'input
+	document.getElementById("new").value = "";
+}
 
-// console.log( hoTrovato );

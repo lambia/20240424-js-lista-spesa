@@ -9,3 +9,8 @@ body {
 	color: white;
 	padding: 1rem;
 }
+
+input {
+	width: 12rem;
+	margin-top: 1rem;
+}
